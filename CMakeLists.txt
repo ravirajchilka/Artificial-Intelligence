@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 project(MyProject CUDA CXX)
-
 cmake_policy(SET CMP0146 NEW)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -70,4 +69,7 @@ if(MSVC)
                      ${TORCH_DLLS}
                      $<TARGET_FILE_DIR:MyApp>)
 endif(MSVC)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 
