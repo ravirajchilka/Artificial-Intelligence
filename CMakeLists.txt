@@ -12,7 +12,12 @@ set(CUDA_TOOLKIT_ROOT_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v1
 find_package(CUDAToolkit 11.8 REQUIRED)
 
 # Set Torch root directory
-set(TORCH_ROOT "D:/Downloads/libtorch-win-shared-with-deps-debug-2.4.0+cu118/libtorch")
+
+# bebug version
+set(TORCH_ROOT "E:/Programs/libtorch_debug_11p8_version_2p4p0/libtorch")
+
+# release version
+#set(TORCH_ROOT "E:/Programs/libtorch_release_11p8_version_2p4p0/libtorch")
 list(APPEND CMAKE_PREFIX_PATH ${TORCH_ROOT})
 
 # Find Torch
@@ -71,5 +76,4 @@ if(MSVC)
 endif(MSVC)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 
