@@ -23,7 +23,7 @@ int main() {
     std::cout << "sizes" << tensorDouble.sizes() << std::endl; // use sizes for size of all dimension
 
 
-    auto customTensor = torch::tensor({5.3,9.0});
+    auto customTensor = torch::tensor({5.3,9.0}); // create custom tensor
     std::cout << "customTensos" << customTensor << std::endl;
 
 
