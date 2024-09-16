@@ -11,9 +11,18 @@ constexpr float DISCOUNT_FACTOR = 0.99;
 constexpr float EPSILON = 0.1;
 
 // Simple grid world environment
-class GridWorld {
+class GridWorld {  
+      private:
+          int agent_pos;
+          int goal_pos;
+
       public:
-          GridWorld() : agent_pos(0), goal_pos(GRID_SIZE * GRID_SIZE - 1) {}
+          //GridWorld() : agent_pos(0), goal_pos(GRID_SIZE * GRID_SIZE - 1) {}
+          
+          GridWorld(int initial_agent_pos, int initial_goal_pos) :
+          agent_pos(initial_agent_pos), goal_pos(initial_goal_pos) {
+              
+          }
 
           std::pair<int, float> step(int action) {
               int row = agent_pos / GRID_SIZE;
@@ -39,14 +48,11 @@ class GridWorld {
               return agent_pos == goal_pos;
           }
 
-      private:
-          int agent_pos;
-          int goal_pos;
-      };
+};
+
 
 
 int main() {
-    torch::manual_seed(42);
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(0.0, 1.0);
@@ -54,7 +60,8 @@ int main() {
     // Initialize Q-table
     auto q_table = torch::zeros({GRID_SIZE * GRID_SIZE, NUM_ACTIONS});
 
-    GridWorld env;
+    //GridWorld env;
+    GridWorld env (0,GRID_SIZE*GRID_SIZE-1);
 
     for (int episode = 0; episode < NUM_EPISODES; ++episode) {
         env.reset();
@@ -74,7 +81,7 @@ int main() {
             auto [next_state, reward] = env.step(action);
             total_reward += reward;
 
-            // Q-learning update
+            // Q-learning update using bellman equation Q(s,a) = Q(s,a) + alpha * [R + gamma * max(Q(s',a')) - Q(s,a)]
             float max_next_q = q_table[next_state].max().item<float>();
             float target = reward + DISCOUNT_FACTOR * max_next_q;
             float current_q = q_table[state][action].item<float>();
