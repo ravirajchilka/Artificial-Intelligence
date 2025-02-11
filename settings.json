@@ -1,0 +1,11 @@
+// build and execute in single command for VScode saveAndRun extension
+"saveAndRun": {
+    "commands": [
+        {
+            "match": ".cpp",
+            "cmd": "cd E:/Software_Projects/RL_DRL_practice/build; cmake --build .;cd E:/Software_Projects/RL_DRL_practice/build/debug;./MyApp.exe",
+            "useShortcut": false,
+            "silent": false
+        }
+    ]
+}
