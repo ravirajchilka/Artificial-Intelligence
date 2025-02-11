@@ -1,3 +1,89 @@
+############################ Commented code is for the upgraded versions of libtorch,cuDNN,CUDA #############################################
+
+# cmake_minimum_required(VERSION 3.10)
+# project(MyProject CUDA CXX)
+# cmake_policy(SET CMP0146 NEW)
+
+# set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# # Set CUDA Toolkit root directory
+# set(CUDA_TOOLKIT_ROOT_DIR "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8")
+
+# # Find CUDAToolkit instead of CUDA
+# find_package(CUDAToolkit 12.8 REQUIRED)
+
+# # Set Torch root directory
+
+# # bebug version
+# # set(TORCH_ROOT "E:/Programs/libtorch_debug_11p8_version_2p4p0/libtorch")
+
+# # release version
+# # set(TORCH_ROOT "E:/Programs/libtorch_release_11p8_version_2p4p0/libtorch")
+
+# set(TORCH_ROOT "E:/Programs/libtorch_release_12p6_version_2p6p0/libtorch")
+# list(APPEND CMAKE_PREFIX_PATH ${TORCH_ROOT})
+
+# # Find Torch
+# find_package(Torch REQUIRED)
+
+# # cuDNN configuration
+# option(USE_CUDNN "Use cuDNN" ON)
+# if(USE_CUDNN)
+#   find_library(CUDNN_LIBRARY cudnn
+#                HINTS "${CUDA_TOOLKIT_ROOT_DIR}/lib/x64")
+#   if(CUDNN_LIBRARY)
+#     message(STATUS "cuDNN found: ${CUDNN_LIBRARY}")
+#     add_definitions(-DUSE_CUDNN)
+#     include_directories("${CUDA_TOOLKIT_ROOT_DIR}/include")
+#     list(APPEND TORCH_LIBRARIES ${CUDNN_LIBRARY})
+#   else()
+#     message(WARNING "cuDNN not found. Compiling without cuDNN support.")
+#     set(USE_CUDNN OFF)
+#   endif()
+# endif()
+
+# # Your executable
+# add_executable(MyApp main.cpp)
+# target_link_libraries(MyApp ${TORCH_LIBRARIES} CUDA::cudart)
+
+
+# if(MSVC)
+#   file(GLOB TORCH_DLLS "${TORCH_INSTALL_PREFIX}/lib/*.dll")
+#   add_custom_command(TARGET MyApp POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#     ${TORCH_DLLS}
+#     $<TARGET_FILE_DIR:MyApp>
+#   )
+# endif(MSVC)
+
+
+
+# # After your add_executable() command:
+# if(MSVC)
+#   file(GLOB TORCH_DLLS "${TORCH_INSTALL_PREFIX}/lib/*.dll")
+#   add_custom_command(TARGET MyApp POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#     ${TORCH_DLLS}
+#     $<TARGET_FILE_DIR:MyApp>
+#   )
+# endif(MSVC)
+
+
+# if(MSVC)
+#   file(GLOB TORCH_DLLS "${TORCH_ROOT}/lib/*.dll")
+#   add_custom_command(TARGET MyApp
+#                      POST_BUILD
+#                      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                      ${TORCH_DLLS}
+#                      $<TARGET_FILE_DIR:MyApp>)
+# endif(MSVC)
+
+# set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+###########################################################################################
+
+
 cmake_minimum_required(VERSION 3.10)
 project(MyProject CUDA CXX)
 cmake_policy(SET CMP0146 NEW)
