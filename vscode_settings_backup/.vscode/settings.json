@@ -1,0 +1,6 @@
+{
+    "C_Cpp.default.compilerPath": "C:/winlibs-x86_64-mcf-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.1-r2/mingw64/bin/g++.exe",
+    "files.associations": {
+        "iosfwd": "cpp"
+    }
+}
