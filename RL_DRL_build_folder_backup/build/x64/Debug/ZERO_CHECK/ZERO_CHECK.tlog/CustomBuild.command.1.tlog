@@ -1,0 +1,10 @@
+^E:\SOFTWARE_PROJECTS\RL_DRL_PRACTICE\BUILD\CMAKEFILES\4A2741C172E5200896151E2CE8243C80\GENERATE.STAMP.RULE
+setlocal
+E:\Programs\cpp_mingw-w64-v1\mingw64\bin\cmake.exe -SE:/Software_Projects/RL_DRL_practice -BE:/Software_Projects/RL_DRL_practice/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/Software_Projects/RL_DRL_practice/build/MyProject.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
