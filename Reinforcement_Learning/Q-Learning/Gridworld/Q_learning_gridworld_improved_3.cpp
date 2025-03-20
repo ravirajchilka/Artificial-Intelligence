@@ -49,21 +49,23 @@ public:
 };
 
 // Function to update Q-table
-void update_q_table(torch::Tensor& q_table, int state, int action, float reward, int current_state) {
-    float max_current_q = q_table[current_state].max().item<float>();  
-    float target = reward + DISCOUNT_FACTOR * max_current_q;  
-    float current_q = q_table.index({state, action}).item<float>();  
-    q_table.index_put_({state, action}, current_q + LEARNING_RATE * (target - current_q));
+void update_q_table(torch::Tensor& q_table, int current_state, int action, float reward, int next_state) {
+    float max_next_q = q_table[next_state].max().item<float>(); // Find the max Q-value of the next state (next_state)
+    float target = reward + DISCOUNT_FACTOR * max_next_q; // Compute the target value using the Bellman equation
+    float current_q = q_table.index({current_state, action}).item<float>(); // Get the current Q-value for the taken action
+    float temporal_difference = target - current_q; // Compute the temporal difference
+    q_table.index_put_({current_state, action}, current_q + LEARNING_RATE * temporal_difference); // Update Q-value for the current state (where action was taken)
 }
 
 // Function to choose an action (exploration vs exploitation)
-int choose_action(torch::Tensor& q_table, int state, std::mt19937& gen, float epsilon) {
+int choose_action(torch::Tensor& q_table, int current_state, std::mt19937& gen, float epsilon) {
     std::uniform_real_distribution<> dis(0.0, 1.0);
     if (dis(gen) < epsilon) {
         return std::uniform_int_distribution<>(0, NUM_ACTIONS - 1)(gen); // Random action
     }
-    return q_table[state].argmax().item<int>(); // Best action
+    return q_table[current_state].argmax().item<int>(); // Best action
 }
+
 
 int main() {
     std::random_device rd;
@@ -77,7 +79,7 @@ int main() {
         int start_pos = start_pos_dist(gen); // Random starting position
         GridWorld env(start_pos, GRID_SIZE * GRID_SIZE - 1);
         env.reset(start_pos);
-        int previous_state = start_pos;  // This will store the previous state
+        int current_state = start_pos;  // This will store the current state
         float total_reward = 0;
         int steps = 0;
     
@@ -85,17 +87,18 @@ int main() {
     
         while (!env.is_terminal() && steps < MAX_STEPS) {
             steps++;
-            int action = choose_action(q_table, previous_state, gen, epsilon);
-            auto [current_state, reward] = env.step(action);  // current_state is the new state
+            int action = choose_action(q_table, current_state, gen, epsilon);
+            auto [next_state, reward] = env.step(action);  // next_state is the new state
             total_reward += reward;
-            update_q_table(q_table, previous_state, action, reward, current_state);  // update using previous_state and current_state
-            previous_state = current_state;  // Update the previous state to the current state for the next iteration
+            update_q_table(q_table, current_state, action, reward, next_state);  // update using current_state and next_state
+            current_state = next_state;  // Update the current state to the next state for the next iteration
         }
     
         if (episode % 100 == 0) {
             std::cout << "Episode " << episode << ", Total Reward: " << total_reward << std::endl;
         }
     }
+
 
     // Print the final Q-table
     std::cout << "Final Q-table:" << std::endl;
@@ -109,5 +112,4 @@ int main() {
 
     return 0;
 }
-
 
