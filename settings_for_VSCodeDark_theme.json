@@ -1,0 +1,82 @@
+{
+    "workbench.sideBar.location": "right",
+    "workbench.iconTheme": "city-lights-icons-vsc-light",
+    "saveAndRun": {
+        "commands": [
+            {
+                "match": ".cpp",
+                "cmd": "cd E:/Software_Projects/RL_DRL_practice/build; cmake --build .;cd E:/Software_Projects/RL_DRL_practice/build/debug;./MyApp.exe",
+                "useShortcut": false,
+                "silent": false
+            }
+        ]
+    },
+    
+    "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Hack', 'Iosevka', 'Monospace'",
+    "editor.fontSize": 12,
+    "terminal.integrated.fontSize": 11,
+    "terminal.integrated.fontFamily": "'Consolas '",
+  
+   // Terminal text color settings
+   "workbench.colorCustomizations": {
+
+       "terminal.foreground": "#b5eab5",
+       "editor.background": "#111111",  
+       "minimap.background": "#0000002d",
+       "minimap.border": "#00000000",
+       "terminal.background": "#111111",
+        "activityBar.background": "#111111",
+    	"titleBar.activeBackground": "#111111",
+    	"titleBar.inactiveBackground": "#111111",
+  		"statusBar.background": "#111111"
+     
+},
+
+"editor.tokenColorCustomizations": {
+  "[neo-Sp]": {
+    // "comments": "#649664",
+    // "functions": "#FF0000",
+    // "keywords": "#0000FF",
+   "textMateRules": [
+    {
+      "scope": "variable",
+      "settings": {
+        "foreground": "#adadad"
+      }
+    }
+  ]
+   
+  },
+  "[Visual Studio Dark]": {
+    // "comments": "#649664",
+     "functions": "#74b2ff",
+    // "keywords": "#0000FF",
+     "keywords": "#fd9597",
+   "textMateRules": [
+    {
+      "scope": "variable",
+      "settings": {
+        "foreground": "#dfe2e8",
+      }
+    }
+  ]
+   
+  },
+},
+
+"github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+},
+"workbench.editorAssociations": {
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "*.usd": "default",
+    "*.usda": "default"
+},
+"extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+},
+"workbench.colorTheme": "Visual Studio Dark"
+}
