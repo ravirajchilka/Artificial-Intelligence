@@ -20,7 +20,7 @@ e - right transit cursor at last letter
 COPY/PASTE 
 p - paste below line 
 P - paste above the line 
-y${number of times} - this will yank lines based on the variable value, y5 will copy next 5 lines
+y{number of times} - this will yank lines based on the variable value, y5 will copy next 5 lines
 
 DELETE/CHANGE
 dd - deletes entire line 
