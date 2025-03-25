@@ -1,4 +1,4 @@
-// {} represents a placeholder in this the given commands
+// {} represents a placeholder for the given commands
 
 INSERT CURSORS 
 i - before the cursor
