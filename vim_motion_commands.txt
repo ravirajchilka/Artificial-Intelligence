@@ -1,0 +1,62 @@
+// {} represents a placeholder in this the given commands
+
+INSERT CURSORS 
+i - before the cursor
+a - after the cursor
+o - opens a new line below
+O - open a new line above 
+A - at the end of the line
+I - at the begining of the line
+
+TRANSIT MOTIONS (numbers can be added e.g. 3j or 5k)
+h - left transit 
+l - right transit
+w - right transit by word by begining letter
+b - let transit by word
+j - line down 
+k - line up
+e - right transit cursor at last letter
+
+COPY/PASTE 
+p - paste below line 
+P - paste above the line 
+y${number of times} - this will yank lines based on the variable value, y5 will copy next 5 lines
+
+DELETE/CHANGE
+dd - deletes entire line 
+cc - deletes the content only not line and remains in the insert mode
+dw - delete word,deletes from the cursor up untill the word, deletes and removes the space as well
+x - delete a letter in word at cursor
+d{number of words}w - specify number of words to delete from the cursor
+diw - same as dw but deletes entire word and doesnt remove the space
+ciw - same as diw but with isert mode
+D or d$ - deletes from the cursor up untill the end of the line
+C - same as D command but remains in insert mode
+y$ - copy from the cursor up untill the end of the line
+yiw - copy the word
+r{your letter} - replace the letter on the cursor with one you type
+d% - deletes everything including braces
+y% - yanks or copies everything including braces
+c% - deletes everything including braces but returns insert mode
+y{number of times}w - yanks words by given number. y3w it will copy first 3 words of a line
+
+INSIDE SPECIAL CHARS
+ci{your special char} - removes all the lines in between the special chars and returns cursor 
+yi{your special char} - copies everything inside the special chars content
+di{your special char} - deletes everything inside the special chars content remains in normal mode
+
+JUMP
+* - jumps on each word where cursor is 
+% - jumps back and forth between braces
+t{special char} - jumps to the cursor point before the char
+f{special char} - jumps to the cursor point to the char
+dt{special char} - delete till the special char's start position from cursor position
+df{special char} - delete till the special char's start position including that char from cursor position
+dT{special char} - same as dt but in backward direction
+dF{special char} - same as df but in backward direction 
+yt{special char} - copies content till the speical char
+gg - jumps to the start position of file
+G - jumps to the end of the file
+G{number} - jumps to the specefic line number
+
+
