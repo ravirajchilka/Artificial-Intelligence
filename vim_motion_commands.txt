@@ -21,6 +21,10 @@ COPY/PASTE
 p - paste below line 
 P - paste above the line 
 y{number of times} - this will yank lines based on the variable value, y5 will copy next 5 lines
+y$ - copy from the cursor up untill the end of the line
+yiw - copy the word
+y% - yanks or copies everything including braces
+y{number of times}w - yanks words by given number. y3w it will copy first 3 words of a line
 
 DELETE/CHANGE
 dd - deletes entire line 
@@ -32,13 +36,9 @@ diw - same as dw but deletes entire word and doesnt remove the space
 ciw - same as diw but with isert mode
 D or d$ - deletes from the cursor up untill the end of the line
 C - same as D command but remains in insert mode
-y$ - copy from the cursor up untill the end of the line
-yiw - copy the word
 r{your letter} - replace the letter on the cursor with one you type
 d% - deletes everything including braces
-y% - yanks or copies everything including braces
 c% - deletes everything including braces but returns insert mode
-y{number of times}w - yanks words by given number. y3w it will copy first 3 words of a line
 
 INSIDE SPECIAL CHARS
 ci{your special char} - removes all the lines in between the special chars and returns cursor 
