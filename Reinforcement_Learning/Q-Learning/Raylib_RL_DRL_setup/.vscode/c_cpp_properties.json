@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "windows-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "E:/Programs/libtorch_release_12p6_version_2p6p0/libtorch/include",
+                "E:/Programs/libtorch_release_12p6_version_2p6p0/libtorch/include/torch/csrc/api/include",
+                "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8/include",
+                "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.8/include/thrust",
+                "E:/Programs/anaconda/Lib/site-packages/pybind11/include",
+                "C:/raylib/raylib/src/**"  // Included Raylib headers
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "GRAPHICS_API_OPENGL_33",
+                "PLATFORM_DESKTOP"
+            ],
+            //"compilerPath": "E:/Programs/cpp_mingw-w64-v1/mingw64/bin/gcc.exe", // Path to the MinGW GCC compiler
+            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/bin/clang-cl.exe",
+            //"compilerPath": "C:/Program Files/LLVM/bin/clang++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++20", // Set to c++20 for a more modern C++ standard
+            "intelliSenseMode": "windows-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
