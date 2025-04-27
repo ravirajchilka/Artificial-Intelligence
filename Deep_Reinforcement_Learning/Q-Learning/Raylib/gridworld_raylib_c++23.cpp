@@ -64,8 +64,13 @@ class Ball {
 		bool is_terminal_state() const {
 			return ball_pos.x == goal_pos.x && ball_pos.y == goal_pos.y;
 		}
-		Vector2 get_position() const { return ball_pos; }
-		std::pair<Vector2, float> get_reward_state_pair(std::int16_t action) {
+		
+		Vector2 get_position() const { 
+			return ball_pos; 
+		}
+
+		using StateReward_c_type = std::pair<Vector2, float>;
+		StateReward_c_type get_reward_state_pair(std::int16_t action) {
 			switch (action) {
 				case 0: move_ball_forward(); break; // Right
 				case 1: move_ball_backward(); break; // Left
@@ -111,7 +116,6 @@ std::expected<QNetwork, std::string> create_model() {
         return std::unexpected(std::string("Failed to create model: ") + e.what());
     }
 }
-
 
 // --- State Encoding for NN ---
 inline int pos_to_state(Vector2 pos) {
