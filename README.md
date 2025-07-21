@@ -1,3 +1,4 @@
+# Reinforcement Learning & Deep Reinforcement Learning 
 Reinforcement Learning (RL) is a type of machine learning where agents learn to make decisions by interacting with an environment to maximize cumulative rewards.
 It’s based on trial and error, using feedback from actions to improve future decisions.
 Q-learning and Policy Gradient are popular RL algorithms.
